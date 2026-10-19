@@ -1,0 +1,124 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>📊 Student Performance Analytics</h1>
+        <nav>
+            <button data-section="dashboard">Dashboard</button>
+            <button data-section="addStudent">Add Student</button>
+            <button data-section="analysis">Analysis</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- DASHBOARD SECTION -->
+        <section id="dashboard" class="active">
+            <h2>Dashboard Overview</h2>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p id="totalStudents">0</p>
+                </div>
+                <div class="card">
+                    <h3>Average CGPA</h3>
+                    <p id="avgGPA">0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Median CGPA</h3>
+                    <p id="medianGPA">0.00</p>
+                </div>
+                <div class="card">
+                    <h3>Top Performer</h3>
+                    <p id="topPerformer">—</p>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <button id="sampleBtn">Load Sample Data</button>
+                <button id="csvBtn">Export CSV</button>
+                <button id="clearBtn">Clear All</button>
+            </div>
+
+            <h3>Student Records</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll No</th>
+                            <th>Semester</th>
+                            <th>CGPA</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentList">
+                        <!-- Data rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ADD STUDENT SECTION -->
+        <section id="addStudent">
+            <h2>Add New Student</h2>
+            <form id="studentForm" novalidate>
+                <input type="text" id="name" placeholder="Student Name" autocomplete="off" required>
+                <input type="text" id="rollNo" placeholder="Roll Number" autocomplete="off" required>
+                <input type="number" id="semester" min="1" max="8" placeholder="Semester (1-8)" required>
+                <input type="number" id="cgpa" min="0" max="10" step="0.01" placeholder="CGPA (0-10)" required>
+                <input type="email" id="email" placeholder="Email Address" autocomplete="off" required>
+                <button type="submit" class="btn-primary">Add Student</button>
+            </form>
+        </section>
+
+        <!-- ANALYSIS SECTION -->
+        <section id="analysis">
+            <h2>Performance Analysis</h2>
+
+            <div class="toolbar">
+                <select id="semesterFilter">
+                    <option value="all">All Semesters</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                    <option value="3">Semester 3</option>
+                    <option value="4">Semester 4</option>
+                    <option value="5">Semester 5</option>
+                    <option value="6">Semester 6</option>
+                    <option value="7">Semester 7</option>
+                    <option value="8">Semester 8</option>
+                </select>
+                <button id="sortNameBtn">Sort A–Z</button>
+                <button id="sortGpaBtn">Sort by CGPA</button>
+            </div>
+
+            <div class="charts">
+                <div class="chart-box">
+                    <h3>Grade Distribution</h3>
+                    <canvas id="gradeChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3>Semester-wise Average CGPA</h3>
+                    <canvas id="semesterChart"></canvas>
+                </div>
+            </div>
+
+            <div class="insights">
+                <h3>Automated Insights</h3>
+                <ul id="insightList"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>&copy; 2026 Student Analytics — GTU PBL Project</footer>
+
+    <!-- JAVASCRIPT LINK -->
+    <script src="script.js"></script>
+</body>
+</html>
